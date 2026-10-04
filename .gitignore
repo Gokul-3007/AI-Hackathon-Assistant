@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+uploads/*
+downloads/*
+data/projects.sqlite3
+.venv/
+.dist/

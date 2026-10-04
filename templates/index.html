@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <title>AI Hackathon Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">AI</div>
+          <div>
+            <h1>Hackathon</h1>
+            <small>Assistant</small>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-link active" data-target="dashboard">Dashboard</button>
+          <button class="nav-link" data-target="problem-selector">Problem Selector</button>
+          <button class="nav-link" data-target="solution-generator">Solution Generator</button>
+          <button class="nav-link" data-target="tech-stack">Technology Stack</button>
+          <button class="nav-link" data-target="pitch-generator">Pitch Generator</button>
+          <button class="nav-link" data-target="chat-panel">AI Chat</button>
+        </nav>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Project workspace</p>
+            <h2>AI Hackathon Assistant</h2>
+          </div>
+          <div class="header-actions">
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+              <span class="theme-toggle-icon" aria-hidden="true">
+                <svg class="sun-icon" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+                </svg>
+                <svg class="moon-icon" viewBox="0 0 24 24" fill="none">
+                  <path d="M20.2 15.4A8.5 8.5 0 0 1 8.6 3.8 8.5 8.5 0 1 0 20.2 15.4Z" />
+                </svg>
+              </span>
+              <span id="theme-toggle-label">Dark mode</span>
+            </button>
+            <div class="status-box" id="status-box">Ready for project analysis</div>
+            <a class="download-button" href="/api/download-report" target="_blank">Download report</a>
+          </div>
+        </header>
+
+        <section id="dashboard" class="content-section active">
+          <div class="cards-grid">
+            <button class="stat-card" type="button" data-target="problem-selector" aria-controls="problem-selector">
+              <span>Problem Statement</span>
+              <strong data-stage-status="problem">○ Pending</strong>
+            </button>
+            <button class="stat-card" type="button" data-target="solution-generator" aria-controls="solution-generator">
+              <span>Solution</span>
+              <strong data-stage-status="solution">○ Pending</strong>
+            </button>
+            <button class="stat-card" type="button" data-target="tech-stack" aria-controls="tech-stack">
+              <span>Technology Stack</span>
+              <strong data-stage-status="technology">○ Pending</strong>
+            </button>
+            <button class="stat-card" type="button" data-target="pitch-generator" aria-controls="pitch-generator">
+              <span>Pitch</span>
+              <strong data-stage-status="pitch">○ Pending</strong>
+            </button>
+          </div>
+        </section>
+
+        <section id="problem-selector" class="content-section">
+          <div class="panel">
+            <h3>Upload Hackathon Documents</h3>
+            <p class="upload-note">Source fields are shown as extracted from your file. Scanned/image-only PDFs need OCR before analysis; this app can read selectable PDF text, DOCX, and TXT.</p>
+            <form id="upload-form" enctype="multipart/form-data">
+              <div class="inline-controls">
+                <input type="file" name="file" accept=".pdf,.docx,.txt" required />
+                <button type="submit" class="primary-button">Upload</button>
+              </div>
+            </form>
+            <div id="upload-result" class="result-box"></div>
+          </div>
+
+          <div class="panel">
+            <h3>Problem Statement Analysis</h3>
+            <form id="problem-form">
+              <div class="grid-two">
+                <label>
+                  Preferred Domain
+                  <input type="text" name="preferred_domain" placeholder="Healthcare, Agriculture, Education" />
+                </label>
+                <label>
+                  Team Skills
+                  <input type="text" name="team_skills" placeholder="Python, React, Machine Learning" />
+                </label>
+                <label>
+                  Development Duration
+                  <input type="text" name="development_duration" value="6 Weeks" />
+                </label>
+                <label>
+                  Difficulty
+                  <select name="difficulty">
+                    <option value="Medium">Medium</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Hard">Hard</option>
+                  </select>
+                </label>
+                <label>
+                  Required Technologies
+                  <input type="text" name="required_technologies" placeholder="Python, React, AI/ML" />
+                </label>
+                <label>
+                  AI/ML Requirement
+                  <select name="ai_ml_requirement">
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </label>
+                <label>
+                  Number of shortlist items
+                  <input type="number" name="shortlist_count" min="1" max="10" value="5" />
+                </label>
+              </div>
+              <button id="analyze-problems-button" type="submit" class="primary-button" disabled>Analyze Problem Statements</button>
+            </form>
+            <div id="problem-results" class="result-box"></div>
+          </div>
+        </section>
+
+        <section id="solution-generator" class="content-section">
+          <div class="panel">
+            <h3>AI Solution Generator</h3>
+            <div id="selected-problem-summary" class="selected-problem-summary">
+              Select a problem statement to see it here.
+            </div>
+            <button id="generate-solutions" class="primary-button" disabled>Generate Solutions</button>
+            <div id="solution-results" class="result-box"></div>
+          </div>
+        </section>
+
+        <section id="tech-stack" class="content-section">
+          <div class="panel">
+            <h3>Technology Stack Recommender</h3>
+            <form id="tech-stack-form">
+              <div class="grid-two">
+                <label>
+                  Team Skills
+                  <input type="text" name="team_skills" placeholder="Python, React, Machine Learning" />
+                </label>
+                <label>
+                  Development Duration
+                  <input type="text" name="development_duration" value="6 Weeks" />
+                </label>
+                <label class="full-width">
+                  Required Features
+                  <input type="text" name="required_features" placeholder="Dashboard, AI workflow, analytics" />
+                </label>
+              </div>
+              <button type="submit" class="primary-button">Recommend Stack</button>
+            </form>
+            <div id="tech-results" class="result-box"></div>
+          </div>
+        </section>
+
+        <section id="pitch-generator" class="content-section">
+          <div class="panel">
+            <h3>Pitch Generator</h3>
+            <form id="pitch-form">
+              <label>
+                Pitch Duration (Minutes)
+                <select name="pitch_duration">
+                  <option value="3">3 Minutes</option>
+                  <option value="5" selected>5 Minutes</option>
+                  <option value="10">10 Minutes</option>
+                </select>
+              </label>
+              <button id="generate-pitch-button" type="submit" class="primary-button" disabled>Generate Pitch</button>
+            </form>
+            <p id="pitch-prerequisite" class="form-hint">Select a problem statement first to enable pitch generation.</p>
+            <div id="pitch-results" class="result-box"></div>
+          </div>
+        </section>
+
+        <section id="chat-panel" class="content-section">
+          <div class="panel">
+            <h3>Chat with your project mentor</h3>
+            <p class="chat-intro">Ask a quick question about your selected problem, solution, or pitch.</p>
+            <div class="chat-suggestions" aria-label="Suggested questions">
+              <button type="button" class="chat-suggestion" data-message="Explain my selected problem simply">Explain my problem</button>
+              <button type="button" class="chat-suggestion" data-message="How can I make my solution simpler?">Simplify my solution</button>
+              <button type="button" class="chat-suggestion" data-message="What should our team build first?">What should we build first?</button>
+            </div>
+            <div id="chat-window" class="chat-window"></div>
+            <form id="chat-form" class="chat-form">
+              <input type="text" id="chat-input" placeholder="Type your message…" autocomplete="off" required />
+              <button id="chat-send-button" type="submit" class="primary-button">Send</button>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

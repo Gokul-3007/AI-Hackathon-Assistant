@@ -1,0 +1,26 @@
+AI HACKATHON ASSISTANT REPORT
+========================================
+
+1. Selected Problem Statement
+ID: SIH26038
+Title: Explainable AI for Diabetic Retinopathy Screening in Rural India
+Compatibility: High
+Reasoning: document domain matches preferred domain (MedTech / BioTech / HealthTech); no entered team skill is explicitly mentioned in the source text; source text explicitly mentions AI/ML
+
+2. Problem Analysis
+Technical Feasibility: Not stated in source
+AI/ML Scope: Mentioned in source
+Prototype Feasibility: Not stated in source
+Innovation: Requires team review
+
+3. Proposed Solution
+Grad-CAM Visual Reasoning Assistant
+A lightweight web application that processes retinal fundus images using a pre-trained CNN model and generates Grad-CAM heatmaps to highlight specific regions of interest (e.g., microaneurysms, hemorrhages) that contributed to the diabetic retinopathy classification. The interface presents the image, the heatmap overlay, and a simplified textual explanation for non-expert users.
+
+4. Technology Stack
+No technology stack generated yet.
+
+5. Pitch Summary
+Explainable AI for Diabetic Retinopathy Screening in Rural India
+Building smarter decisions with contextual AI.
+Slides generated: 12

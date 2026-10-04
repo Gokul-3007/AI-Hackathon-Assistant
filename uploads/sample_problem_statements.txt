@@ -1,0 +1,35 @@
+Problem Statement ID: PS-101
+Title: AI-Based Crop Disease Detection
+Organization: AgriFuture Labs
+Domain: Agriculture
+Description: Farmers struggle to identify crop diseases early, leading to yield loss and higher expenses. The solution should detect diseases from plant images and offer actionable recommendations.
+Requirements: Image-based disease detection, multilingual support, recommendations for treatment, offline support for rural areas.
+Expected Outcome: A working prototype that detects common crop diseases using AI and provides farmer-friendly guidance.
+Constraints: Limited internet connectivity, low-quality images, need for rapid inference on mobile devices.
+
+Problem Statement ID: PS-202
+Title: Smart Student Career Guidance Platform
+Organization: FutureSkills Foundation
+Domain: Education
+Description: Students need support in choosing skill pathways and career plans. The system should analyze student interests, skills, and market demand to recommend future-ready learning tracks.
+Requirements: Personalized recommendations, career analytics, skill gap identification, dashboard for students and mentors.
+Expected Outcome: A recommendation engine that helps students understand their strengths and pathways for growth.
+Constraints: Data privacy, diverse student backgrounds, limited onboarding data.
+
+Problem Statement ID: PS-303
+Title: AI-Assisted Chronic Disease Monitoring
+Organization: Public Health Innovation Unit
+Domain: Healthcare
+Description: Chronic disease patients often miss follow-up care because of limited physician capacity and poor monitoring. The system should alert healthcare teams when patient conditions worsen.
+Requirements: Symptom tracking, AI-based risk prediction, clinician dashboard, medication adherence reminders.
+Expected Outcome: Early intervention and improved patient care outcomes.
+Constraints: Sensitive health data, compliance requirements, low digital literacy in some caregivers.
+
+Problem Statement ID: PS-404
+Title: AI-Powered Waste Segregation System
+Organization: GreenCity Initiative
+Domain: Sustainability
+Description: Municipalities need reliable segregation of recyclable and organic waste. A solution can detect and classify waste types in real time.
+Requirements: Image-based waste recognition, dashboard for municipal operations, integration with collection schedules.
+Expected Outcome: Improved segregation efficiency and lower landfill waste.
+Constraints: Diverse waste materials, outdoor lighting changes, deployment across multiple districts.
